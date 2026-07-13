@@ -45,7 +45,7 @@ Instead of manually reviewing every inquiry, the automation receives lead data t
 
 Complete n8n workflow showing the automation flow from lead intake, AI processing, structured output, and data storage.
 
-![Workflow](/workflow.png)
+![Workflow](workflow.png)
 
 ---
 
@@ -55,7 +55,7 @@ Postman was used to simulate a real client lead submission by sending a POST req
 
 The request contains lead information in JSON format, similar to data that could come from a website form, landing page, or external application.
 
-![Postman API Testing](screenshots/postman.png)
+![Postman API Testing](postman.png)
 
 ---
 
@@ -63,7 +63,7 @@ The request contains lead information in JSON format, similar to data that could
 
 The AI Agent processes the submitted lead information and generates qualification insights based on customer requirements, budget, and urgency.
 
-![AI Output](screenshots/ai-output.png)
+![AI Output](ai-output.png)
 
 ---
 
@@ -71,7 +71,7 @@ The AI Agent processes the submitted lead information and generates qualificatio
 
 The Structured Output Parser ensures that the AI-generated response follows a consistent format, making the information easier to process and store in the next automation steps.
 
-![Structured Output Parser](screenshots/structured-parser.png)
+![Structured Output Parser](structured-parser.png)
 
 ---
 
@@ -79,7 +79,7 @@ The Structured Output Parser ensures that the AI-generated response follows a co
 
 The Google Sheets node in n8n is configured to automatically map and send the processed lead information into a spreadsheet.
 
-![Google Sheets Node](screenshots/google-sheets-node.png)
+![Google Sheets Node](google-sheets-node.png)
 
 ---
 
@@ -87,7 +87,7 @@ The Google Sheets node in n8n is configured to automatically map and send the pr
 
 The final qualified lead data is stored in Google Sheets, creating an organized lead database that can be reviewed for sales follow-up.
 
-![Google Sheets Database](screenshots/google-sheets.png)
+![Google Sheets Database](google-sheets.png)
 
 ## 💡 Business Use Case
 
