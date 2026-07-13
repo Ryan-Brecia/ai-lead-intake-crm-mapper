@@ -41,45 +41,53 @@ Instead of manually reviewing every inquiry, the automation receives lead data t
 
 ## 📸 Workflow Screenshots
 
-### 1. Webhook Lead Capture
+### 1. Workflow Overview
 
-The workflow starts by receiving incoming lead information through an n8n webhook. The webhook acts as an API endpoint that collects customer data in JSON format.
+Complete n8n workflow showing the automation flow from lead intake, AI processing, structured output, and data storage.
 
-(Add screenshot)
+![Workflow](screenshots/workflow.png)
 
 ---
 
-### 2. Postman API Testing
+### 2. Webhook API Testing with Postman
 
 Postman was used to simulate a real client lead submission by sending a POST request to the n8n webhook endpoint.
 
 The request contains lead information in JSON format, similar to data that could come from a website form, landing page, or external application.
 
-(Add screenshot)
+![Postman API Testing](screenshots/postman.png)
 
 ---
 
-### 3. AI Lead Analysis
+### 3. AI Lead Analysis Output
 
 The AI Agent processes the submitted lead information and generates qualification insights based on customer requirements, budget, and urgency.
 
-(Add screenshot)
+![AI Output](screenshots/ai-output.png)
 
 ---
 
-### 4. Google Sheets Node Configuration
+### 4. Structured Output Parser
+
+The Structured Output Parser ensures that the AI-generated response follows a consistent format, making the information easier to process and store in the next automation steps.
+
+![Structured Output Parser](screenshots/structured-parser.png)
+
+---
+
+### 5. Google Sheets Node Configuration
 
 The Google Sheets node in n8n is configured to automatically map and send the processed lead information into a spreadsheet.
 
-(Add screenshot)
+![Google Sheets Node](screenshots/google-sheets-node.png)
 
 ---
 
-### 5. Google Sheets Lead Database Output
+### 6. Google Sheets Lead Database Output
 
 The final qualified lead data is stored in Google Sheets, creating an organized lead database that can be reviewed for sales follow-up.
 
-(Add screenshot)
+![Google Sheets Database](screenshots/google-sheets.png)
 
 ## 💡 Business Use Case
 
