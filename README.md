@@ -45,7 +45,7 @@ Instead of manually reviewing every inquiry, the automation receives lead data t
 
 Complete n8n workflow showing the automation flow from lead intake, AI processing, structured output, and data storage.
 
-![Workflow](screenshots/workflow.png)
+![Workflow](/workflow.png)
 
 ---
 
