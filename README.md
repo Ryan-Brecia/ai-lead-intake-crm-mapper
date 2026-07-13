@@ -25,7 +25,6 @@ Instead of manually reviewing every inquiry, the automation receives lead data t
 4. AI generates lead qualification insights
 5. Lead information is saved into Google Sheets
 
-````markdown
 ## 📋 Example Lead Input
 
 ```json
