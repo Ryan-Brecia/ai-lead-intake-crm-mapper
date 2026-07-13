@@ -27,17 +27,6 @@ Instead of manually reviewing every inquiry, the automation receives lead data t
 
 ## 📋 Example Lead Input
 
-```json
-{
-  "name": "John Smith",
-  "email": "john@gmail.com",
-  "company": "ABC Roofing",
-  "employees": 18,
-  "service": "Google Ads Management",
-  "budget": 3500,
-  "urgency": "ASAP",
-  "message": "We want more roofing leads."
-}
 
 ## 📸 Workflow Screenshots
 
