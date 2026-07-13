@@ -25,8 +25,38 @@ Instead of manually reviewing every inquiry, the automation receives lead data t
 4. AI generates lead qualification insights
 5. Lead information is saved into Google Sheets
 
+````markdown
 ## 📋 Example Lead Input
 
+```json
+{
+  "name": "John Smith",
+  "email": "john@gmail.com",
+  "company": "ABC Roofing",
+  "employees": 18,
+  "service": "Google Ads Management",
+  "budget": 3500,
+  "urgency": "ASAP",
+  "message": "We want more roofing leads."
+}
+```
+
+---
+
+## 📊 Output
+
+The automation creates structured lead information including:
+
+- Lead name
+- Email address
+- Company details
+- Number of employees
+- Requested service
+- Budget information
+- Urgency level
+- Original customer message
+- AI qualification notes
+- Lead assessment summary
 
 ## 📸 Workflow Screenshots
 
