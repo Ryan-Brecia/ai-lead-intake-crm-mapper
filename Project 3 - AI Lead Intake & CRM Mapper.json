@@ -1,0 +1,355 @@
+{
+  "name": "Project 3 - AI Lead Intake & CRM Mapper",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-intake",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3f717e9c-014f-42cd-a6fa-84e57f2216f9",
+      "name": "Webhook",
+      "webhookId": "a6210b27-1ce0-4d93-b42c-8d07555c6cf8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2a3cf318-684b-42c5-8666-373b4431934b",
+              "name": "body.name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "dab6e4ab-21ea-4c0d-9ccf-8c02e8768141",
+              "name": "body.email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "99b6c421-4cf6-4e06-ad53-d672d566f240",
+              "name": "body.company",
+              "value": "={{ $json.body.company }}",
+              "type": "string"
+            },
+            {
+              "id": "e7600078-f332-48c8-9a1e-bd60525708ba",
+              "name": "body.employees",
+              "value": "={{ $json.body.employees }}",
+              "type": "number"
+            },
+            {
+              "id": "7d6d466c-26c6-4098-8bc1-f75b8f725629",
+              "name": "body.service",
+              "value": "={{ $json.body.service }}",
+              "type": "string"
+            },
+            {
+              "id": "38083fec-3eb1-4272-aeb9-cccf2c5c92f0",
+              "name": "body.budget",
+              "value": "={{ $json.body.budget }}",
+              "type": "number"
+            },
+            {
+              "id": "2ec6538c-a0fa-4abe-a27d-129b022a1d7f",
+              "name": "body.urgency",
+              "value": "={{ $json.body.urgency }}",
+              "type": "string"
+            },
+            {
+              "id": "d486c161-a20c-4660-ac35-2b94311f1136",
+              "name": "body.message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        0
+      ],
+      "id": "99338a5b-9eba-48dd-8a48-4403bb4dd27a",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an AI Sales Assistant.\n\nAnalyze the lead information below and return ONLY valid JSON.\n\nLead Information:\nName: {{ $json.body.name }}\nEmail: {{ $json.body.email }}\nCompany: {{ $json.body.company }}\nEmployees: {{ $json.body.employees }}\nService: {{ $json.body.service }}\nBudget: {{ $json.body.budget }}\nUrgency: {{ $json.body.urgency }}\nMessage: {{ $json.body.message }}\n\nGenerate:\n- lead_name\n- email\n- company\n- employees\n- service\n- budget\n- industry\n- priority (High, Medium, Low)\n- lead_score (0-100)\n\nReturn only JSON.",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "78709ba0-fd0b-4017-a8c5-c0af1c87d19b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        368,
+        208
+      ],
+      "id": "9910c0f7-36a0-4b96-9d42-a1a154a1b656",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "8m7PE76DwDBsa9zK",
+          "name": "Groq account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"lead_name\": \"John Smith\",\n  \"email\": \"john@gmail.com\",\n  \"company\": \"ABC Roofing\",\n  \"employees\": 18,\n  \"service\": \"Google Ads Management\",\n  \"budget\": 3500,\n  \"industry\": \"Construction/Hardware\",\n  \"priority\": \"High\",\n  \"lead_score\": 80\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        672,
+        224
+      ],
+      "id": "5c0fee48-048d-4c60-9125-6705705f1b94",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1RrEPUv8hAt3def40DSM4RkCsUoMOXROO2PmjrQSfsSk",
+          "mode": "list",
+          "cachedResultName": "project 3 Ai lead intake to google sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RrEPUv8hAt3def40DSM4RkCsUoMOXROO2PmjrQSfsSk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RrEPUv8hAt3def40DSM4RkCsUoMOXROO2PmjrQSfsSk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "lead_name": "={{ $json.output.lead_name }}",
+            "email": "={{ $json.output.email }}",
+            "company": "={{ $json.output.company }}",
+            "employees": "={{ $json.output.employees }}",
+            "service": "={{ $json.output.service }}",
+            "budget": "={{ $json.output.budget }}",
+            "industry": "={{ $json.output.industry }}",
+            "priority": "={{ $json.output.priority }}",
+            "lead_score": "={{ $json.output.lead_score }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "lead_name",
+              "displayName": "lead_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "employees",
+              "displayName": "employees",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "service",
+              "displayName": "service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "budget",
+              "displayName": "budget",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "industry",
+              "displayName": "industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lead_score",
+              "displayName": "lead_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        800,
+        0
+      ],
+      "id": "f28f51a0-9e49-4a17-995a-1576ed4dc565",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jT2WfmBBMH1DvMbT",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "a72dd620-d82e-4cab-879d-3719498ebb0e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "81feeeb69a6455e4dc4b4c0fa91aa81ec2875bbfb13122652f419225a59ca42b"
+  },
+  "nodeGroups": [],
+  "id": "tKYKVJJWp3iY83Dd",
+  "tags": []
+}
